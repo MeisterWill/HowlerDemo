@@ -3,10 +3,71 @@
 }
 
 <div class="text-center">
+    <h2>Howler Demo</h2>
+    <p class="text-start my-2">
+        This is a demo of interactions between Howler, SignalR, and an ASP.Net webapp.
+        Running simultaneously there is a server, which is sending messages through SignalR on regular intervals.
+        Below there are multiple interactions with that server to demonstrate different funcationality.
+        Click the "Major Chord" button to test that your browser can play sounds through Howler.js
+    </p>
     <button class="btn btn-primary"
         id="major-chord-button">
         Major Chord
     </button>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm m-2">
+            <div class="card">
+                <div class="card-header">
+                    Acknowledge Server Side
+                </div>
+                <div class="card-body">
+                    <p>
+                        Every 10 seconds a notification will be sent until this button is pressed. <br /> 
+                        A message will be sent to the notification sender and the server will stop sending messages.
+                    </p>
+                    <button id="stop-notifications-button" class="btn btn-primary">
+                        Stop notifications
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm m-2">
+            <div class="card">
+                <div class="card-header">
+                    Acknowledge Client Side
+                </div>
+                <div class="card-body">
+                    <p>
+                        A notification will be received every 12 seconds. <br />
+                        The browser will only make noise if the check is on.
+                    </p>
+                    <div class="form-check-inline">
+                        <input id="client-alarm-enable-check" class="form-check-input" type="checkbox" />
+                        <label for="client-alarm-enable-check">Make notification sounds.</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm m-2">
+            <div class="card">
+                <div class="card-header">
+                    Request Song
+                </div>
+                <div class="card-body">
+                    <p>
+                        This button requests a notification from the sender and will make noise upon receiving response.
+                    </p>
+                    <button id="request-notification-button" class="btn btn-primary">
+                        Request notification
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script type="module" src="~/js/NoiseMaker.js"></script>

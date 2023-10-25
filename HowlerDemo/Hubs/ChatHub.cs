@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 
-namespace HowlerChat.Hubs
+namespace SignalR.Messages
 {
-    class ChatHub : Hub
+    class MessageHub : Hub
     {
         public async Task SendMessage(string user, string message)
         {

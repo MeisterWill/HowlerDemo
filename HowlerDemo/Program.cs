@@ -1,5 +1,5 @@
 using Microsoft.Extensions.FileProviders;
-using SignalRChat.Hubs;
+using SignalR.Messages;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,6 +44,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-//app.MapHub<SignalRChat.Hubs.MessageHub>("/messageHub");
+app.MapHub<MessageHub>("/messageHub");
 
 app.Run();
