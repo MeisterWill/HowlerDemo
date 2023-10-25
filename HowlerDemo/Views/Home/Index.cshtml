@@ -6,7 +6,7 @@
     <h2>Howler Demo</h2>
     <p class="text-start my-2">
         This is a demo of interactions between Howler, SignalR, and an ASP.Net webapp.
-        Running simultaneously there is a server, which is sending messages through SignalR on regular intervals.
+        Alongside the webapp there is a server sending messages through SignalR on regular intervals.
         Below there are multiple interactions with that server to demonstrate different funcationality.
         Click the "Major Chord" button to test that your browser can play sounds through Howler.js
     </p>
@@ -68,9 +68,25 @@
             </div>
         </div>
     </div>
+    <div class="card m-2">
+        <div class="card-header">
+            SignalR Message Testing
+        </div>
+        <div class="card-body">
+            <p>Open this webpage twice. Send text messages and see them appear in the other browser.</p>
+            <div class="d-inline">
+                <label for="message-text-input">Message Text:</label>
+                <input id="message-text-input" type="text" placeholder="Enter message text..." />
+            </div>
+            <button class="btn btn-primary" id="send-message-button">Send</button>
+            <ul id="message-list">
+            </ul>
+        </div>
+    </div>
 </div>
 
 <script type="module" src="~/js/NoiseMaker.js"></script>
+<script type="module" src="~/js/messages.js"></script>
 <link rel="stylesheet" href="~/lib/bootstrap/dist/boostrap.css" />
 
 
