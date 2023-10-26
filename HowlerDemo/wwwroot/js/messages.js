@@ -50,12 +50,12 @@ $("#send-message-button").on("click", function () {
     connection.invoke("SendMessage", message);
 });
 
-$("#stop-notifications-button").on("click", function () {
+$("#stop-happy-birthday-button").on("click", function () {
     var message = "StopHappyBirthday";
     connection.invoke("SendMessage", message);
 })
 
-$("#request-notification-button").on("click", function () {
+$("#request-space-mystery-button").on("click", function () {
     var message = "RequestSpaceMystery";
     connection.invoke("SendMessage", message);
 })
