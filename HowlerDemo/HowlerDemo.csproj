@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Hubs\ChatHub.cs" />
+    <Content Include="Hubs\MessageHub.cs" />
   </ItemGroup>
 
   <ItemGroup>
