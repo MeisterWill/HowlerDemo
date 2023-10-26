@@ -29,6 +29,7 @@ namespace NotificationSender
         public void Invoke(string command, string parameter)
         {
             HubConnection.InvokeAsync(command, parameter);
+            Console.WriteLine($"Invoked of {command} with parameter: {parameter}");
         }
 
         public void AddHandler(string command, Action<string> handler)

@@ -32,7 +32,6 @@ namespace NotificationSender
             {
                 if (invocation.Tick())
                 {
-                    Console.WriteLine($"Timed invocation of {invocation.Command} with {invocation.Message}");
                     Connection.Invoke(invocation.Command, invocation.Message);
                 }
             }

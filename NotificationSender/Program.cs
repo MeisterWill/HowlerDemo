@@ -21,6 +21,10 @@ connection.AddHandler("ReceiveMessage", message =>
     {
         invocationTimer.RemoveInvocation("SendSound", "HappyBirthday.mp3");
         Console.WriteLine("Received command to stop sending HappyBirthday");
+    }   else if (message == "RequestSpaceMystery")
+    {
+        Console.WriteLine("Received command to send SpaceMystery");
+        connection.Invoke("SendSound", "SpaceMystery.mp3");
     }
 });
 

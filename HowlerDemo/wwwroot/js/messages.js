@@ -55,3 +55,8 @@ $("#stop-notifications-button").on("click", function () {
     connection.invoke("SendMessage", message);
 })
 
+$("#request-notification-button").on("click", function () {
+    var message = "RequestSpaceMystery";
+    connection.invoke("SendMessage", message);
+})
+
