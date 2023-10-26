@@ -8,5 +8,10 @@ namespace SignalR.Messages
         {
             await Clients.All.SendAsync("ReceiveMessage", message);
         }
+
+        public async Task SendSound(string soundFileName)
+        {
+            await Clients.All.SendAsync("ReceiveSound", soundFileName);
+        }
     }
 }

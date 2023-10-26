@@ -1,5 +1,19 @@
 ﻿"use strict";
 
+import "/node_modules/howler/src/howler.core.js";
+
+$("#major-chord-button").on("click", function () {
+    playSound("majorchord.mp3")
+}
+);
+
+function playSound(soundFileName) {
+    var sound = new Howl({
+        src: [`./mp3s/${soundFileName}`]
+    })
+    sound.play();
+}
+
 var connection = new signalR.HubConnectionBuilder().withUrl("/messageHub").build(); //Create a connection object for the /messageHub endpoint
 
 $("#send-message-button").attr("disabled", true);
@@ -13,6 +27,17 @@ connection.on("ReceiveMessage", function (message) {
     var li = document.createElement("li");
     $("#message-list").append(li);
     li.textContent = `${message}`;
+});
+
+connection.on("ReceiveSound", function (soundFileName) {
+    if (soundFileName != "Mario.mp3") {
+        playSound(soundFileName);
+    } else {
+        var value = $("#client-mario-enable-check").is(":checked");
+        if (value){
+            playSound(soundFileName)
+        }
+    }
 });
 
 connection.start().then(function () {

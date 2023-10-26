@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HowlerDemo", "HowlerDemo\HowlerDemo.csproj", "{BB2D3B24-600A-4663-A05F-F323214509AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRServer", "SignalRServer\SignalRServer.csproj", "{11DCA216-5A5F-49FB-B972-A65C6FAA1C55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationSender", "NotificationSender\NotificationSender.csproj", "{522EDDF3-1CB1-46A2-9ED3-D3E9029393B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{BB2D3B24-600A-4663-A05F-F323214509AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB2D3B24-600A-4663-A05F-F323214509AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB2D3B24-600A-4663-A05F-F323214509AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11DCA216-5A5F-49FB-B972-A65C6FAA1C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11DCA216-5A5F-49FB-B972-A65C6FAA1C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11DCA216-5A5F-49FB-B972-A65C6FAA1C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11DCA216-5A5F-49FB-B972-A65C6FAA1C55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{522EDDF3-1CB1-46A2-9ED3-D3E9029393B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{522EDDF3-1CB1-46A2-9ED3-D3E9029393B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{522EDDF3-1CB1-46A2-9ED3-D3E9029393B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{522EDDF3-1CB1-46A2-9ED3-D3E9029393B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
