@@ -50,3 +50,8 @@ $("#send-message-button").on("click", function () {
     connection.invoke("SendMessage", message);
 });
 
+$("#stop-notifications-button").on("click", function () {
+    var message = "StopHappyBirthday";
+    connection.invoke("SendMessage", message);
+})
+
