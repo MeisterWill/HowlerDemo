@@ -92,3 +92,7 @@ $("#pps-stop-button").on("click", function () {
     HappyDay.pause();
     ResetHappyDay();
 });
+
+$("#pps-volume-range").on("input", function () {
+    HappyDay.volume($("#pps-volume-range").val() / 100.0) //Divide by 100 to get to percent instead of integer
+});
