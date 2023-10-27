@@ -67,22 +67,42 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card m-2">
-        <div class="card-header">
-            SignalR Message Testing
-        </div>
-        <div class="card-body">
-            <p>Open this webpage twice. Send text messages and see them appear in the other browser.</p>
-            <div class="d-inline">
-                <label for="message-text-input">Message Text:</label>
-                <input id="message-text-input" type="text" placeholder="Enter message text..." />
+        <div class="row">
+            <div class="col-sm m-2">
+                <div class="card m-2">
+                    <div class="card-header">
+                        SignalR Message Testing
+                    </div>
+                    <div class="card-body">
+                        <p>Open this webpage twice. Send text messages and see them appear in the other browser.</p>
+                        <div class="d-inline">
+                            <label for="message-text-input">Message Text:</label>
+                            <input id="message-text-input" type="text" placeholder="Enter message text..." />
+                        </div>
+                        <button class="btn btn-primary" id="send-message-button">Send</button>
+                        <ul id="message-list">
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <button class="btn btn-primary" id="send-message-button">Send</button>
-            <ul id="message-list">
-            </ul>
+            <div class="col-sm m-2">
+                <div class="card m-2">
+                    <div class="card-header">
+                        Play-Pause-Stop
+                    </div>
+                    <div class= "card-body">
+                        <p>The following buttons emulate an MP3 player. It has play, pause, and stop. 
+                            Once the track reaches the end it will be able to be restarted by clicking play.</p>
+                        <button class="btn btn-primary" id="pps-play-button">Play</button>
+                        <button class="btn btn-primary" id="pps-pause-button">Pause</button>
+                        <button class="btn btn-primary" id="pps-stop-button">Stop</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    
+    
 </div>
 
 <script src="~/js/signalr/dist/browser/signalr.js"></script>

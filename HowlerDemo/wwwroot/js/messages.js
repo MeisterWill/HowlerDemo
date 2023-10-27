@@ -60,3 +60,35 @@ $("#request-space-mystery-button").on("click", function () {
     connection.invoke("SendMessage", message);
 })
 
+//Play Pause Stop handling
+var HappyDay = "Not Set"
+function ResetHappyDay() {
+    HappyDay = new Howl({
+        src: [`/mp3s/HappyDay.mp3`],
+        onend: function () { ResetHappyDay(); }
+    });
+    $("#pps-play-button").attr("disabled", false);
+    $("#pps-pause-button").attr("disabled", true);
+    $("#pps-stop-button").attr("disabled", true);
+}
+
+ResetHappyDay();
+
+$("#pps-play-button").on("click", function () {
+    HappyDay.play();
+    $("#pps-play-button").attr("disabled", true);
+    $("#pps-pause-button").attr("disabled", false);
+    $("#pps-stop-button").attr("disabled", false);
+});
+
+$("#pps-pause-button").on("click", function () {
+    HappyDay.pause();
+    $("#pps-play-button").attr("disabled", false);
+    $("#pps-pause-button").attr("disabled", true);
+    $("#pps-stop-button").attr("disabled", false);
+});
+
+$("#pps-stop-button").on("click", function () {
+    HappyDay.pause();
+    ResetHappyDay();
+});
