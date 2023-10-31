@@ -5,11 +5,18 @@ $("#major-chord-button").on("click", function () {
 }
 );
 
+const soundMap = new Map(); 
+
 function playSound(soundFileName) {
-    var sound = new Howl({
-        src: [`./mp3s/${soundFileName}`]
-    })
-    sound.play();
+
+    if (!soundMap.has(soundFileName)) {
+        var sound = new Howl({
+            src: [`./mp3s/${soundFileName}`]
+        })
+        soundMap.set(soundFileName, sound);
+    }
+
+    soundMap.get(soundFileName).play();
 }
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/messageHub").build(); //Create a connection object for the /messageHub endpoint
@@ -65,40 +72,39 @@ $("#request-space-mystery-button").on("click", function () {
 })
 
 //Play Pause Stop handling
-var HappyDay = "Not Set"
-function ResetHappyDay() {
-    HappyDay = new Howl({
+soundMap.set("HappyDay.mp3",
+    new Howl({
         src: [`/mp3s/HappyDay.mp3`],
         onend: function () { ResetHappyDay(); }
-    });
+    }));
+function ResetHappyDay() {
+    soundMap.get("HappyDay.mp3").stop();
     $("#pps-play-button").attr("disabled", false);
     $("#pps-pause-button").attr("disabled", true);
     $("#pps-stop-button").attr("disabled", true);
 }
 
-ResetHappyDay();
-
 $("#pps-play-button").on("click", function () {
-    HappyDay.play();
+    soundMap.get("HappyDay.mp3").play();
     $("#pps-play-button").attr("disabled", true);
     $("#pps-pause-button").attr("disabled", false);
     $("#pps-stop-button").attr("disabled", false);
 });
 
 $("#pps-pause-button").on("click", function () {
-    HappyDay.pause();
+    soundMap.get("HappyDay.mp3").pause();
     $("#pps-play-button").attr("disabled", false);
     $("#pps-pause-button").attr("disabled", true);
     $("#pps-stop-button").attr("disabled", false);
 });
 
 $("#pps-stop-button").on("click", function () {
-    HappyDay.pause();
+    soundMap.get("HappyDay.mp3").pause();
     ResetHappyDay();
 });
 
 $("#pps-volume-range").on("input", function () {
-    HappyDay.volume($("#pps-volume-range").val() / 100.0); //Divide by 100 to get to percent instead of integer
+    soundMap.get("HappyDay.mp3").volume($("#pps-volume-range").val() / 100.0); //Divide by 100 to get to percent instead of integer
 });
 
 //Sound Scheduling
