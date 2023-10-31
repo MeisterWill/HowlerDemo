@@ -1,6 +1,4 @@
-﻿"use strict";
-
-import "/node_modules/howler/src/howler.core.js";
+﻿import "/node_modules/howler/src/howler.core.js";
 
 $("#major-chord-button").on("click", function () {
     playSound("majorchord.mp3")
@@ -29,35 +27,41 @@ connection.on("ReceiveMessage", function (message) {
     li.textContent = `${message}`;
 });
 
-connection.on("ReceiveSound", function (soundFileName) {
-    if (soundFileName != "Mario.mp3") {
-        playSound(soundFileName);
+connection.on("ReceiveSound", function (parameters) {
+    if (parameters.message != "Mario.mp3") {
+        playSound(parameters.message);
     } else {
         var value = $("#client-mario-enable-check").is(":checked");
         if (value){
-            playSound(soundFileName)
+            playSound(parameters.message)
         }
     }
 });
 
 connection.start().then(function () {
     $("#send-message-button").attr("disabled", false);
-    }
-)
-
-$("#send-message-button").on("click", function () {
-    var message = $("#message-text-input").val()
-    connection.invoke("SendMessage", message);
 });
 
+//Send Message
+$("#send-message-button").on("click", function () {
+    var message = $("#message-text-input").val();
+    var parameters = { message: message }
+    connection.invoke("SendMessage", parameters);
+});
+
+//Happy Birthday Card
 $("#stop-happy-birthday-button").on("click", function () {
     var message = "StopHappyBirthday";
-    connection.invoke("SendMessage", message);
+    var parameters = { message: message }
+    connection.invoke("SendMessage", parameters);
 })
 
+
+//Space Mystery Card
 $("#request-space-mystery-button").on("click", function () {
     var message = "RequestSpaceMystery";
-    connection.invoke("SendMessage", message);
+    var parameters = {message: message}
+    connection.invoke("SendMessage", parameters);
 })
 
 //Play Pause Stop handling
@@ -94,5 +98,17 @@ $("#pps-stop-button").on("click", function () {
 });
 
 $("#pps-volume-range").on("input", function () {
-    HappyDay.volume($("#pps-volume-range").val() / 100.0) //Divide by 100 to get to percent instead of integer
+    HappyDay.volume($("#pps-volume-range").val() / 100.0); //Divide by 100 to get to percent instead of integer
 });
+
+//Sound Scheduling
+$("#scheduling-add-button").on("click", function () {
+    var soundFileName = $("#scheduling-filename-input").val()
+    var interval = $("#scheduling-interval-input").val()
+    var parameters = {message: soundFileName, number: interval}
+    connection.invoke("SendAddTimedSound", parameters);
+
+    var li = document.createElement("li");
+    li.textContent = `${soundFileName} every ${interval} seconds`
+    $("#scheduling-list").append(li);
+})

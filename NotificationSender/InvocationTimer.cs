@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HowlerDemo.Hubs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +33,7 @@ namespace NotificationSender
             {
                 if (invocation.Tick())
                 {
-                    Connection.Invoke(invocation.Command, invocation.Message);
+                    Connection.Invoke(invocation.Command, new MessageParams { Message = invocation.Message });
                 }
             }
         }

@@ -1,17 +1,23 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using HowlerDemo.Hubs;
+using Microsoft.AspNetCore.SignalR;
 
 namespace SignalR.Messages
 {
     class MessageHub : Hub
     {
-        public async Task SendMessage(string message)
+        public async Task SendMessage(MessageParams parameters)
         {
-            await Clients.All.SendAsync("ReceiveMessage", message);
+            await Clients.All.SendAsync("ReceiveMessage", parameters);
         }
 
-        public async Task SendSound(string soundFileName)
+        public async Task SendSound(MessageParams parameters)
         {
-            await Clients.All.SendAsync("ReceiveSound", soundFileName);
+            await Clients.All.SendAsync("ReceiveSound", parameters);
+        }
+
+        public async Task SendAddTimedSound(MessageParams parameters)
+        {
+            await Clients.All.SendAsync("ReceiveAddTimedSound", parameters);
         }
     }
 }

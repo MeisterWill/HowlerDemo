@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.SignalR.Hubs;
+﻿using HowlerDemo.Hubs;
+using Microsoft.AspNet.SignalR.Hubs;
 using Microsoft.AspNetCore.SignalR.Client;
 using System;
 using System.Collections.Generic;
@@ -26,13 +27,13 @@ namespace NotificationSender
             HubConnection.StopAsync();
         }
 
-        public void Invoke(string command, string parameter)
+        public void Invoke(string command, MessageParams parameters)
         {
-            HubConnection.InvokeAsync(command, parameter);
-            Console.WriteLine($"Invoked of {command} with parameter: {parameter}");
+            HubConnection.InvokeAsync(command, parameters);
+            Console.WriteLine($"Invoked of {command} with parameter: {parameters.Message}");
         }
 
-        public void AddHandler(string command, Action<string> handler)
+        public void AddHandler(string command, Action<MessageParams> handler)
         {
             HubConnection.On(command, handler);
         }
